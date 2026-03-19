@@ -82,9 +82,9 @@ export function SunatBilling() {
               {/* Mock Invoice */}
               <div className="border-b border-slate-200 dark:border-slate-700 pb-4 mb-4">
                 <div className="flex items-center justify-between mb-2">
-                  <div className="text-sm text-slate-500 dark:text-slate-400">FACTURA ELECTRÓNICA</div>
+                  <div className="text-sm text-slate-500 dark:text-slate-400">{t("sunat.invoice.type")}</div>
                   <div className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-xs">
-                    ACEPTADO
+                    {t("sunat.invoice.status")}
                   </div>
                 </div>
                 <div className="text-2xl dark:text-white mb-1">F001-00001234</div>
@@ -108,7 +108,7 @@ export function SunatBilling() {
 
               <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 bg-slate-50 dark:bg-slate-900 rounded-lg p-3">
                 <Shield size={16} className="text-cyan-500" />
-                <span>Firmado digitalmente • Enviado a SUNAT</span>
+                <span>{t("sunat.invoice.signed")}</span>
               </div>
 
               {/* Floating elements */}

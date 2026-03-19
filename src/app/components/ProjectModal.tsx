@@ -3,18 +3,16 @@
 import { motion, AnimatePresence } from "motion/react";
 import { X, ExternalLink, Github, ChevronLeft, ChevronRight } from "lucide-react";
 import { ImageWithFallback } from "./ImageWithFallback";
+import { useLanguage } from "../contexts/LanguageContext";
 import { useState } from "react";
 
 interface Project {
-  title: string;
-  description: string;
-  fullDescription: string;
+  key: string;
   images: string[];
   tags: string[];
   category: string;
   github?: string;
   demo?: string;
-  features?: string[];
 }
 
 interface ProjectModalProps {
@@ -24,9 +22,15 @@ interface ProjectModalProps {
 }
 
 export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
+  const { t } = useLanguage();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   if (!project) return null;
+
+  const features = t(`project.${project.key}.features`)
+    .split(",")
+    .map((f) => f.trim())
+    .filter(Boolean);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % project.images.length);
@@ -71,7 +75,7 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
               <div className="relative h-80 bg-slate-900 dark:bg-black rounded-t-2xl overflow-hidden">
                 <ImageWithFallback
                   src={project.images[currentImageIndex]}
-                  alt={`${project.title} - Image ${currentImageIndex + 1}`}
+                  alt={`${t(`project.${project.key}.title`)} - Image ${currentImageIndex + 1}`}
                   className="w-full h-full object-cover"
                 />
 
@@ -140,13 +144,17 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                       )}
                     </div>
                   </div>
-                  <h2 className="text-3xl mb-3 dark:text-white">{project.title}</h2>
-                  <p className="text-slate-600 dark:text-slate-400 text-lg">{project.fullDescription}</p>
+                  <h2 className="text-3xl mb-3 dark:text-white">
+                    {t(`project.${project.key}.title`)}
+                  </h2>
+                  <p className="text-slate-600 dark:text-slate-400 text-lg">
+                    {t(`project.${project.key}.fullDescription`)}
+                  </p>
                 </div>
 
                 {/* Tech Stack */}
                 <div className="mb-6">
-                  <h3 className="text-lg mb-3 dark:text-white">Stack Tecnológico</h3>
+                  <h3 className="text-lg mb-3 dark:text-white">{t("project.techStack")}</h3>
                   <div className="flex flex-wrap gap-2">
                     {project.tags.map((tag) => (
                       <motion.span
@@ -162,11 +170,11 @@ export function ProjectModal({ project, isOpen, onClose }: ProjectModalProps) {
                 </div>
 
                 {/* Features */}
-                {project.features && project.features.length > 0 && (
+                {features.length > 0 && (
                   <div>
-                    <h3 className="text-lg mb-3 dark:text-white">Características Principales</h3>
+                    <h3 className="text-lg mb-3 dark:text-white">{t("project.features")}</h3>
                     <ul className="space-y-2">
-                      {project.features.map((feature, i) => (
+                      {features.map((feature, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <div className="w-1.5 h-1.5 bg-cyan-600 rounded-full mt-2 shrink-0" />
                           <span className="text-slate-700 dark:text-slate-300">{feature}</span>

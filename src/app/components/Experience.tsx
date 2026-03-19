@@ -104,7 +104,7 @@ export function Experience() {
 
   const resetTimer = useCallback(() => {
     if (timerRef.current) clearInterval(timerRef.current);
-    timerRef.current = setInterval(next, 4500);
+    timerRef.current = setInterval(next, 7000);
   }, [next]);
 
   useEffect(() => {
@@ -232,7 +232,7 @@ export function Experience() {
             </button>
 
             {/* Card */}
-            <div className="flex-1 min-h-[300px]">
+            <div className="flex-1 h-[320px]">
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                   key={activeIndex}
@@ -242,8 +242,9 @@ export function Experience() {
                   animate="center"
                   exit="exit"
                   transition={{ duration: 0.35, ease: "easeInOut" }}
+                  className="h-full"
                 >
-                  <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-7 shadow-xl border border-cyan-500/30 dark:border-cyan-400/20 flex flex-col gap-4">
+                  <div className="bg-slate-50 dark:bg-slate-800 rounded-2xl p-7 shadow-xl border border-cyan-500/30 dark:border-cyan-400/20 flex flex-col gap-4 h-[320px] overflow-y-auto">
                     <div className="flex items-start justify-between">
                       <div>
                         <h3 className="text-xl font-semibold text-slate-900 dark:text-white mb-1">
