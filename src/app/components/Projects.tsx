@@ -61,7 +61,7 @@ const projects = [
     key: "p6",
     image: "/images/projects/nestjs-hexa-services.webp",
     images: ["/images/projects/nestjs-hexa-services.webp"],
-    tags: ["Python", "FastAPI"],
+    tags: ["NestJS", "TypeScript"],
     category: "Library",
     github: "",
     demo: "",
