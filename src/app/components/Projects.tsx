@@ -101,6 +101,14 @@ const projects = [
     category: "Web",
     demo: "https://school-landing-rho.vercel.app",
   },
+  {
+    key: "p11",
+    image: "/images/projects/pip-multitenant-core.webp",
+    images: ["/images/projects/pip-multitenant-core.webp"],
+    tags: ["Python", "Flask", "FastAPI", "Django", "Docker"],
+    category: "Library",
+    demo: "https://pypi.org/project/pholguinc-multitenant-core",
+  },
 ];
 
 export function Projects() {

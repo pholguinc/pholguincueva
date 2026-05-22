@@ -65,9 +65,9 @@ const experiences = [
   },
   {
     key: "exp8",
-    year: "2026",
-    period: "Feb 2026 – Presente",
-    periodEn: "Feb 2026 – Present",
+    year: "2021",
+    period: "2021 – Presente",
+    periodEn: "2021 – Present",
     location: "Lima, Perú",
     type: "full-time",
   },
